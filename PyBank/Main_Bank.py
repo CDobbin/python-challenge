@@ -12,6 +12,7 @@ file_to_output = os.path.join("analysis", "budget_analysis.txt")  # Output file 
 # Define variables to track the financial data
 total_months = 0
 total_net = 0
+
 # Add more variables to track other necessary financial data
 net_change_list = []
 greatest_increase = ["", 0]
@@ -33,6 +34,7 @@ with open(file_to_load, 'r') as financial_data:
     # Track the total and net change
     total_net += int(first_row[1])
     previous_net = int(first_row[1])
+    
     # Process each row of data
     for row in reader:
 
@@ -53,23 +55,19 @@ with open(file_to_load, 'r') as financial_data:
         if net_change < greatest_decrease[1]:
             greatest_decrease = [row[0], net_change]
 
-
-
 # Calculate the average net change across the months
 average_change = sum(net_change_list) / len(net_change_list)
 
 # Generate the output summary
-
-
-# Print the output
 output = (f"Financial Analysis\n"
-    f"----------------------------\n"
+    f"------------------\n"
     f"Total Months: {total_months}\n"
     f"Total: ${total_net}\n"
     f"Average Change: ${average_change:.2f}\n"
     f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
     f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n")
 
+# Print the output
 print(output)
 
 # Write the results to a text file
