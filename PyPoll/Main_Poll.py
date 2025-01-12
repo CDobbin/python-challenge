@@ -31,7 +31,7 @@ with open(file_to_load) as election_data:
     for row in reader:
 
         # Print a loading indicator (for large datasets)
-       # print(". ", end="")
+        print(".\/,", end="")
 
         # Increment the total vote count for each row
         total_votes += 1
@@ -50,7 +50,8 @@ with open(file_to_load) as election_data:
 with open(file_to_output, "w") as txt_file:
 
     # Print the total vote count (to terminal)
-    election_results = (f"Election Results\n"
+    election_results = ( " \n" 
+        f"Election Results\n"
         f"----------------\n"
         f"Total Votes: {total_votes}\n"
         f"----------------\n")
